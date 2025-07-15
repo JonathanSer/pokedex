@@ -1,0 +1,52 @@
+.edit-card {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+  margin-bottom: 1.5rem;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.input-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.input-small {
+  flex: 1 1 150px;
+}
+
+.tipos-habilidades {
+  justify-content: space-between;
+}
+
+.tipos, .habilidades {
+  flex: 1 1 45%;
+}
+
+.tipo-item, .habilidad-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.7rem;
+}
+
+.tipo-input, .habilidad-input {
+  flex: 1;
+}
+
+.botones-accion {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}

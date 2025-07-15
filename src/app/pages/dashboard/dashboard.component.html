@@ -1,0 +1,13 @@
+<app-navbar [user]="usuario()"></app-navbar>
+
+@if (!estaEnDetalle && !estaEnEditar) {
+  <app-search
+    [placeholder]="'Buscar por nombre'"
+    [initialValue]="''"
+    (value)="buscar($event)"
+  ></app-search>
+  <app-table [filtrarTexto]="buscarTerm()"></app-table>
+}
+
+
+<router-outlet></router-outlet>

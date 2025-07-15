@@ -1,0 +1,105 @@
+.detalle-card {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.cabecera {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.imagen-principal {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.info-principal h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+.info-principal h1 span {
+  font-size: 1.2rem;
+  color: gray;
+}
+
+.tipos {
+  margin-top: 0.5rem;
+}
+
+.tipo {
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  padding: 0.3rem 0.8rem;
+  margin-right: 0.5rem;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.seccion {
+  margin-top: 2rem;
+}
+
+.separador {
+  margin: 2rem 0;
+}
+
+.stats div {
+  margin-bottom: 1rem;
+}
+
+.moves {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.moves span {
+  background-color: #f1f1f1;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+}
+
+.centrado {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.btn-back-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+.btn-back-container button {
+  color: #b23a48;
+  border-color: #b23a48;
+  font-weight: 600;
+  text-transform: none;
+  font-size: 1rem;
+  padding: 10px 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(178, 58, 72, 0.3);
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  min-width: 160px;
+}
+
+.btn-back-container button:hover {
+  background-color: #b23a48;
+  color: white;
+  border-color: #992f3c;
+  box-shadow: 0 4px 12px rgba(178, 58, 72, 0.6);
+  cursor: pointer;
+}
+
+.btn-back-container button:active {
+  background-color: #992f3c;
+  border-color: #7e242f;
+  color: white;
+  box-shadow: 0 2px 6px rgba(121, 39, 45, 0.7);
+}

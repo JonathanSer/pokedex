@@ -1,0 +1,34 @@
+<mat-form-field appearance="outline" class="example-form">
+  <mat-label>{{ label() }}</mat-label>
+  <input
+    [type]="tipo()"
+    matInput
+    [formControl]="emailFormControl"
+    [placeholder]="placeholder()"
+    #input>
+
+  @if (emailFormControl.hasError('required')) {
+    <mat-error>{{label() | i18nSelect:prefijo }} {{ label() | uppercase }} <strong>es {{ label() | i18nSelect:requerido }}</strong></mat-error>
+  }
+
+  @if (tipo() === 'email' && emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+    <mat-error>Por favor, ingrese {{ errorText() }}</mat-error>
+  }
+
+  @if (tipo() === 'password' && emailFormControl.hasError('minlength')) {
+    <mat-error>La contraseña debe tener al menos 6 caracteres</mat-error>
+  }
+
+  @if (tipo() === 'password' || tipo() === 'text') {
+    <button
+      type="button"
+      matIconButton
+      matSuffix
+      (click)="clickEvent($event)"
+      [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide()"
+    >
+      <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  }
+</mat-form-field>

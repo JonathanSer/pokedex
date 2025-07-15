@@ -1,0 +1,53 @@
+<mat-card class="tabla-card">
+  <mat-table [dataSource]="pokemonsFiltrados()" class="mat-elevation-z2 tabla-profesional">
+    <ng-container matColumnDef="nro">
+      <mat-header-cell *matHeaderCellDef> Nro </mat-header-cell>
+      <mat-cell *matCellDef="let pokemon"> {{ pokemon.id }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="imagen">
+      <mat-header-cell *matHeaderCellDef> Imagen </mat-header-cell>
+      <mat-cell *matCellDef="let pokemon"> <img [src]="pokemon.sprites.front_default" width="80" /> </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="nombre">
+      <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+      <mat-cell *matCellDef="let pokemon"> {{ pokemon.name | titlecase }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="tipo">
+      <mat-header-cell *matHeaderCellDef> Tipo(s) </mat-header-cell>
+      <mat-cell *matCellDef="let pokemon">
+        @for (img of getTypesAsUrl(pokemon); track img) {
+          <img [src]="img" width="60" style="margin-right: 5px; padding-top: 5px;" />
+        }
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+      <mat-cell *matCellDef="let pokemon">
+        <button (click)="editar(pokemon); $event.stopPropagation()" mat-icon-button color="primary" aria-label="Editar">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button (click)="eliminarPokemon(pokemon); $event.stopPropagation()" mat-icon-button color="warn" aria-label="Eliminar">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columnas"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnas" (click)="irADetalle(row)"></mat-row>
+  </mat-table>
+
+  <div class="paginacion-contenedor">
+    <button mat-raised-button class="btn-rojo" (click)="paginaAnterior()" [disabled]="paginaActual() === 0">
+      Página anterior
+    </button>
+
+    <button mat-raised-button class="btn-rojo" (click)="siguientePagina()" [disabled]="esUltimaPagina()">
+      Siguiente página
+    </button>
+  </div>
+
+</mat-card>

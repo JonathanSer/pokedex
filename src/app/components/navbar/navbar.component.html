@@ -1,0 +1,14 @@
+<mat-toolbar color="primary" class="navbar">
+  <span class="iconify pokemon-icon" data-icon="ic:outline-catching-pokemon"></span>
+  <span class="logo">POKEDEX</span>
+
+  <span class="spacer"></span>
+
+  <div class="user-info" matTooltip="{{ user()?.email }}">
+    <span class="user-name">{{ user()!.name }}</span>
+    <img [src]="user()!.image" alt="User Image" class="avatar" />
+    <button (click)="salir()" mat-icon-button color="accent" matTooltip="Salir">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>

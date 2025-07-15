@@ -1,0 +1,51 @@
+section {
+  margin-left: 25px;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  margin-top: 16px;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Input */
+input[type="text"] {
+  width: 224px;
+  padding: 10px 14px;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #333;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline-offset: 2px;
+}
+
+input[type="text"]:focus {
+  border-color: #B23A48;
+  box-shadow: 0 0 6px rgba(178, 58, 72, 0.4);
+  outline: none;
+}
+
+/* Botón rojo profesional */
+button.btn-primary {
+  background-color: #B23A48;
+  color: white;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1rem;
+  user-select: none;
+}
+
+button.btn-primary:hover {
+  background-color: #992f3c;
+  box-shadow: 0 4px 12px rgba(153, 47, 60, 0.3);
+}
+
+button.btn-primary:active {
+  background-color: #7e242f;
+}

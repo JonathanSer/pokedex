@@ -1,0 +1,36 @@
+<div class="wrapper">
+  <div class="login-box">
+    <form (ngSubmit)="enviar(correo.value, contrasena.value)">
+      <h2>{{ esRegistro() ? 'Registro': 'Login' }}</h2>
+
+      <app-input
+        [label]="'correo'"
+        [tipo]="'email'"
+        [placeholder]="'ejemplo@correo.com'"
+        #correo
+      ></app-input>
+
+      <app-input
+        [label]="'contraseña'"
+        [tipo]="'password'"
+        [placeholder]="'****'"
+        #contrasena
+      ></app-input>
+
+      <app-button
+        [icono]="'arcticons:pokemon-unite'"
+        [texto]="esRegistro() ? 'Registrar': 'Acceder'"
+      >
+      </app-button>
+
+      <div class="register-link">
+        <p>
+          {{ esRegistro() ? '¿Ya tienes cuenta?' : '¿No tienes cuenta?' }}
+          <a href="#" (click)="cambiar($event)">
+            {{ esRegistro() ? 'Iniciar sesión' : 'Registrarse' }}
+          </a>
+        </p>
+      </div>
+  </form>
+  </div>
+</div>

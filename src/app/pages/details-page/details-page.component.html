@@ -1,0 +1,66 @@
+@if (pokemon) {
+  <ng-container>
+  <mat-card class="detalle-card">
+    <div class="btn-back-container">
+      <button mat-stroked-button color="warn" (click)="volver()">
+        ← Volver a la lista
+      </button>
+    </div>
+    <div class="cabecera">
+      <img [src]="pokemon.sprites.other?.['official-artwork']?.front_default" alt="{{ pokemon.name }}" class="imagen-principal" />
+      <div class="info-principal">
+        <h1>{{ pokemon.name | titlecase }} <span>#{{ pokemon.id }}</span></h1>
+        <p><strong>Altura:</strong> {{ pokemon.height / 10 }} m</p>
+        <p><strong>Peso:</strong> {{ pokemon.weight / 10 }} kg</p>
+        <p><strong>Experiencia base:</strong> {{ pokemon.base_experience }}</p>
+        <div class="tipos">
+          @for (tipo of pokemon.types; track tipo) {
+            <span class="tipo">
+              {{ tipo.type.name | titlecase }}
+            </span>
+          }
+        </div>
+      </div>
+    </div>
+
+    <mat-divider class="separador"></mat-divider>
+
+    <div class="seccion">
+      <h2>Estadísticas</h2>
+      <div class="stats">
+        @for (stat of pokemon.stats; track stat) {
+          <div>
+            <strong>{{ stat.stat.name }}</strong>
+            <mat-progress-bar [value]="stat.base_stat" mode="determinate"></mat-progress-bar>
+            <small>{{ stat.base_stat }}</small>
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="seccion">
+      <h2>Habilidades</h2>
+      <ul>
+        @for (habilidad of pokemon.abilities; track habilidad) {
+          <li>
+            {{ habilidad.ability?.name }} @if (habilidad.is_hidden) {<span>(Oculta)</span>}
+          </li>
+        }
+      </ul>
+    </div>
+
+    <div class="seccion">
+      <h2>Movimientos</h2>
+      <div class="moves">
+        @for (move of pokemon.moves.slice(0, 20); track move) {
+          <span>
+            {{ move.move.name }}
+          </span>
+        }
+
+      </div>
+    </div>
+  </mat-card>
+</ng-container>
+
+}

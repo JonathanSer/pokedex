@@ -1,0 +1,79 @@
+/* Navbar general */
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  height: 64px;
+  background-color: #ffffff; /* fondo blanco limpio */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333333; /* texto gris oscuro */
+  user-select: none;
+}
+
+/* Logo */
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #B23A48; /* rojo profesional borgoña */
+  user-select: none;
+}
+
+/* Espaciador flexible */
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* Icono pokebola */
+.pokemon-icon {
+  font-size: 28px;
+  color: #B23A48; /* rojo profesional borgoña */
+  margin-right: 12px;
+  vertical-align: middle;
+  transition: color 0.3s ease;
+  cursor: default;
+}
+.pokemon-icon:hover {
+  color: #8A2B33; /* rojo más oscuro en hover */
+}
+
+/* Contenedor info usuario */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: default;
+  user-select: none;
+}
+
+/* Nombre usuario */
+.user-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #444444;
+  max-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Imagen avatar */
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid #cccccc;
+  box-shadow: 0 0 5px rgba(0,0,0,0.05);
+}
+
+/* Botón logout */
+button[mat-icon-button] {
+  color: #777777;
+  transition: color 0.3s ease;
+}
+button[mat-icon-button]:hover {
+  color: #444444;
+}

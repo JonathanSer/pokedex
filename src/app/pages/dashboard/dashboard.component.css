@@ -1,0 +1,36 @@
+.user-card {
+  max-width: 400px;
+  margin: auto;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+
+  .card-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .info {
+    flex: 1;
+
+    h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 4px 0 12px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  }
+}

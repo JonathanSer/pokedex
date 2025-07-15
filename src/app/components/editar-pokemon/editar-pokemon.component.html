@@ -1,0 +1,104 @@
+@if (pokemon && form) {
+  <mat-card class="edit-card">
+    <h1>Editar Pokémon #{{ pokemon.id }} - {{ pokemon.name | titlecase }}</h1>
+
+    <form [formGroup]="form" (ngSubmit)="guardar()">
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="name" />
+        @if (form.get('name')?.hasError('required')) {
+          <mat-error>El nombre es obligatorio</mat-error>
+        }
+        @if (form.get('name')?.hasError('minlength')) {
+          <mat-error>Mínimo 3 caracteres</mat-error>
+        }
+      </mat-form-field>
+
+      <div class="input-group">
+        <mat-form-field appearance="fill" class="input-small">
+          <mat-label>Altura (dm)</mat-label>
+          <input type="number" matInput formControlName="height" />
+          @if (form.get('height')?.hasError('min')) {
+            <mat-error>Valor mínimo 1</mat-error>
+          }
+
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="input-small">
+          <mat-label>Peso (hg)</mat-label>
+          <input type="number" matInput formControlName="weight" />
+          @if (form.get('weight')?.hasError('min')) {
+            <mat-error>Valor mínimo 1</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="input-small">
+          <mat-label>Experiencia base</mat-label>
+          <input type="number" matInput formControlName="base_experience" />
+          @if (form.get('base_experience')?.hasError('min')) {
+            <mat-error>No puede ser negativo</mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      <div class="input-group tipos-habilidades">
+
+        <!--
+        <section class="tipos">
+          <h3>Tipos</h3>
+          <div formArrayName="types">
+            @for (tipoCtrl of types.controls; track $index) {
+              <div [formGroupName]="$index" class="tipo-item">
+                <mat-form-field appearance="fill" class="tipo-input">
+                  <input matInput [formControlName]="null" placeholder="Tipo {{ $index + 1 }}" />
+                </mat-form-field>
+                <button mat-icon-button color="warn" type="button" (click)="eliminarTipo($index)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            }
+            <button mat-raised-button type="button" color="primary" (click)="agregarTipo()">
+              + Agregar Tipo
+            </button>
+          </div>
+        </section>
+        -->
+
+        <section class="habilidades">
+          <h3>Habilidades</h3>
+          <div formArrayName="abilities">
+            @for (habCtrl of abilities.controls; track $index) {
+              <div [formGroupName]="$index" class="habilidad-item">
+                <mat-form-field appearance="fill" class="habilidad-input">
+                  <input matInput formControlName="name" placeholder="Nombre habilidad" />
+                </mat-form-field>
+                <mat-checkbox formControlName="is_hidden">Oculta</mat-checkbox>
+                <button mat-icon-button color="warn" type="button" (click)="eliminarHabilidad($index)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            }
+
+            <button mat-raised-button type="button" color="primary" (click)="agregarHabilidad()">
+              + Agregar Habilidad
+            </button>
+          </div>
+        </section>
+
+      </div>
+
+      <div class="botones-accion">
+        <button mat-raised-button color="primary" type="submit" [disabled]="loading">
+          Guardar cambios
+        </button>
+
+        <button mat-stroked-button color="warn" type="button" (click)="volver()" [disabled]="loading">
+          ← Volver a la lista
+        </button>
+      </div>
+
+    </form>
+
+  </mat-card>
+}
