@@ -1,0 +1,46 @@
+.crear-card {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-radius: 16px;
+}
+
+.row {
+  display: flex;
+  gap: 1rem;
+
+  mat-form-field {
+    flex: 1;
+  }
+}
+
+.section {
+  background: #fafafa;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-top: 1rem;
+
+  h3 {
+    margin: 0 0 0.5rem 0;
+  }
+
+  .sub-form {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.botones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+
+  button {
+    min-width: 120px;
+  }
+}

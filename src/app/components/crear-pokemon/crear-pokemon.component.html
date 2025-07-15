@@ -1,0 +1,71 @@
+<mat-card class="crear-card">
+  <h2>Crear Nuevo Pokémon</h2>
+
+  <form [formGroup]="pokemonForm" (ngSubmit)="guardarPokemon()">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Altura</mat-label>
+        <input matInput type="number" formControlName="height" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Peso</mat-label>
+        <input matInput type="number" formControlName="weight" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Experiencia Base</mat-label>
+        <input matInput type="number" formControlName="base_experience" />
+      </mat-form-field>
+    </div>
+
+    <mat-checkbox formControlName="is_default">¿Es el predeterminado?</mat-checkbox>
+
+    <div class="section">
+      <h3>Habilidades</h3>
+      <button mat-mini-fab color="warn" (click)="addAbility()" type="button">+</button>
+
+      @for (ab of abilities.controls; track $index) {
+        <div formArrayName="abilities" [formGroupName]="$index" class="sub-form">
+          <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="ability.name" />
+          </mat-form-field>
+          <button mat-icon-button color="warn" (click)="eliminarAbility($index)" type="button">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      }
+    </div>
+
+    <div class="section">
+      <h3>Tipos</h3>
+      <button mat-mini-fab color="warn" (click)="addType()" type="button">+</button>
+
+      @for (tp of types.controls; track $index) {
+        <div formArrayName="types" [formGroupName]="$index" class="sub-form">
+          <mat-form-field appearance="outline">
+            <mat-label>Nombre del tipo</mat-label>
+            <input matInput formControlName="type.name" />
+          </mat-form-field>
+          <button mat-icon-button color="warn" (click)="eliminarType($index)" type="button">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      }
+
+    </div>
+
+    <div class="botones">
+      <button mat-raised-button color="warn" type="submit">Guardar</button>
+      <button mat-stroked-button color="warn" type="button" (click)="cancelar()">Cancelar</button>
+    </div>
+
+  </form>
+</mat-card>

@@ -6,7 +6,6 @@ export interface IconoPokemon {
   [pokemonId: number]: string[]
 }
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -46,42 +45,37 @@ export class PokemonService {
   }
 
   loadAllPokemons(): void {
-    if (this.yaCargado) {
-      console.log('Ya cargado, no hago nada');
-      return;
-    }
-    if (this.cargando) {
-      console.log('Ya está cargando, no hago nada');
-      return;
-    }
+    if (this.yaCargado || this.cargando) return;
 
     this.cargando = true;
-    console.log('Empiezo la carga de pokemones');
-
-    const allPokemons: Pokemon[] = [];
     const limit = this.limit;
     const total = this.totalPokemons;
 
     const fetchPage = (offset: number) => {
       this.apiPokemon.getPokemons(offset, limit).subscribe(pokemons => {
-        allPokemons.push(...pokemons);
+        // Agrega los nuevos Pokémon a la señal existente
+        this.pokemons.update(actual => [...actual, ...pokemons]);
 
+        // Carga íconos individualmente y los va insertando
+        pokemons.forEach(pokemon => {
+          this.apiPokemon.getTipoIconoUrls(pokemon).subscribe(icons => {
+            this.tipoIconosMap[pokemon.id] = icons;
+          });
+        });
+
+        // Continuar si quedan más
         if (offset + limit < total) {
           fetchPage(offset + limit);
         } else {
-          this.pokemons.set(allPokemons);
-
-          allPokemons.forEach(pokemon => {
-            this.apiPokemon.getTipoIconoUrls(pokemon).subscribe(icons => {
-              this.tipoIconosMap[pokemon.id] = icons;
-            });
-          });
+          this.yaCargado = true;
+          this.cargando = false;
         }
       });
     };
 
     fetchPage(0);
   }
+
 
   actualizarPokemon(pokemonActualizado: Partial<Pokemon> & { id: number }): void {
     const listaActual = this.pokemons();

@@ -3,6 +3,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DetailsPageComponent } from './pages/details-page/details-page.component';
 import { EditarPokemonComponent } from './components/editar-pokemon/editar-pokemon.component';
+import { CrearPokemonComponent } from './components/crear-pokemon/crear-pokemon.component';
 
 export const routes: Routes = [
   {
@@ -20,6 +21,10 @@ export const routes: Routes = [
       {
         path: 'editar/:code',
         component: EditarPokemonComponent
+      },
+      {
+        path: 'crear',
+        component: CrearPokemonComponent
       }
     ]
   },
