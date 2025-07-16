@@ -112,6 +112,7 @@ La **Details Page** es una vista dedicada a mostrar información detallada de un
 * Cada fila debe incluir:
 
 Imagen pequeña (ejemplo. sprite de Pokémon, poster de película)
+
 <img width="1858" height="216" alt="image" src="https://github.com/user-attachments/assets/33c7cd0f-1ffa-494a-93e1-432d8ae9ef98" />
 
 
